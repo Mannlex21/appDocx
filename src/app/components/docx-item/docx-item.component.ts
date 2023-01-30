@@ -33,7 +33,7 @@ export class DocxItemComponent implements OnInit {
   ngOnInit(): void {
     this.template = this.componentService.getComponent(
       this.section.contentHTML.type,
-      this.section.contentHTML.content
+      this.section
     );
     const viewContainerRef = this.componentHost.viewContainerRef;
     viewContainerRef.clear();

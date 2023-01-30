@@ -15,13 +15,18 @@ export class DocxComponent {
     footer: '',
     error: [],
   };
+  showModal: boolean = false;
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.route.queryParams.subscribe((params) => {
       this.data = JSON.parse(params['params']);
-      console.log(this.data);
-      console.warn(
-        `There are ${this.data.error.length} error, It could generate an error in the document`
-      );
+      if (this.data.error.length > 0) {
+        this.showModal = true;
+        console.warn(
+          `There are ${this.data.error.length} error, It could generate an error in the document`
+        );
+      }
     });
   }
+
+  hideModal() {}
 }

@@ -19,6 +19,12 @@ import { ComponentService } from './services/component.service';
 import { ProfileComponent } from './components/templates/profile/profile.component';
 import { SkillsComponent } from './components/templates/skills/skills.component';
 import { EducationComponent } from './components/templates/education/education.component';
+import { LanguageComponent } from './components/templates/language/language.component';
+import { CoursesCertificationComponent } from './components/templates/courses-certification/courses-certification.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [
@@ -31,6 +37,9 @@ import { EducationComponent } from './components/templates/education/education.c
     ProfileComponent,
     SkillsComponent,
     EducationComponent,
+    LanguageComponent,
+    CoursesCertificationComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +49,9 @@ import { EducationComponent } from './components/templates/education/education.c
     AppRoutingModule,
     CardModule,
     FileUploadModule,
+    ToolbarModule,
+    DialogModule,
+    AccordionModule,
   ],
   providers: [ComponentService],
   bootstrap: [AppComponent],

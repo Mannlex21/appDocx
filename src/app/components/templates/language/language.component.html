@@ -6,8 +6,8 @@
       class="col-3"
       *ngFor="let item of content"
     >
-      {{ item.skillName }}
-      <span [hidden]="!item.level">- {{ item.level }}</span>
+      {{ item.language }}
+      <span [hidden]="!item.level">({{ item.level }})</span>
     </li>
     <br />
   </ul>

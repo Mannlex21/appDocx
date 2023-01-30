@@ -1,4 +1,5 @@
-<pre
-  style="padding: 0; margin: 0; white-space: pre-wrap"
-  [innerHTML]="sanitazerText(data.body)"
-></pre>
+<div class="title">{{ data.title }}</div>
+<div class="container-description">
+  <p class="name">{{ content.name }}</p>
+  <p [innerHTML]="sanitazerText(content.body)"></p>
+</div>

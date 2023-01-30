@@ -1,22 +1,24 @@
-<div class="container-upload">
-  <div class="grid">
-    <div class="col-12">
-      <p-card>
-        <ng-template pTemplate="header">
-          <div class="flex justify-content-center">
-            <h1>Seleccione archivo</h1>
-          </div>
-        </ng-template>
-        <p-fileUpload
-          #primeFileUpload
-          name="myfile[]"
-          [multiple]="false"
-          (uploadHandler)="upload($event)"
-          [customUpload]="true"
-          (onProgress)="progressReport($event)"
-          (onUpload)="onUpload($event)"
-        ></p-fileUpload>
-      </p-card>
+<div class="container flex align-items-center justify-content-center">
+  <div class="container-upload">
+    <div class="grid">
+      <div class="col-12">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="flex justify-content-center">
+              <h1>Seleccione archivo</h1>
+            </div>
+          </ng-template>
+          <p-fileUpload
+            #primeFileUpload
+            name="myfile[]"
+            [multiple]="false"
+            (uploadHandler)="upload($event)"
+            [customUpload]="true"
+            (onProgress)="progressReport($event)"
+            (onUpload)="onUpload($event)"
+          ></p-fileUpload>
+        </p-card>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Skills } from '../../../interfaces/docx.interface';
+import { Skill, Section } from '../../../interfaces/docx.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -8,7 +8,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SkillsComponent implements OnInit {
   @Input()
-  data!: Skills[];
+  data!: Section;
+  content!: Skill[];
   constructor(private sanitizer: DomSanitizer) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.content = this.data.contentHTML.content as Skill[];
+  }
 }

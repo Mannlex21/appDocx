@@ -18,7 +18,14 @@ export interface Section {
 
 export interface ContentHTML {
   type: TypeTemplate;
-  content: ProfesionalExperience[] | Profile | Education[] | Skills[] | string;
+  content:
+    | ProfesionalExperience[]
+    | Profile
+    | Education[]
+    | Skill[]
+    | Language[]
+    | Course[]
+    | string;
 }
 
 export interface ProfesionalExperience {
@@ -29,6 +36,7 @@ export interface ProfesionalExperience {
 }
 
 export interface Profile {
+  name: string;
   body: string;
 }
 
@@ -38,9 +46,16 @@ export interface Education {
   date: string;
 }
 
-export interface Skills {
+export interface Skill {
   skillName: string;
   level: string;
+}
+export interface Language {
+  language: string;
+  level: string;
+}
+export interface Course {
+  body: string;
 }
 
 export interface Error {

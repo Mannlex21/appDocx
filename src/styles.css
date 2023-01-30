@@ -1,20 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-    margin: 10px;
-    background-color: var(--surface-b);
-    font-family: var(--font-family);
-    color: var(--text-color);
-    height: 100%;
+html,
+body {
+  margin: 10px;
+  background-color: var(--surface-b);
+  font-family: var(--font-family);
+  color: var(--text-color);
+  height: 100%;
 }
 
 .text-layout {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 
-.container-upload{
-    width: 30em;
+.container-upload {
+  width: 30em;
 }
 
-.p-card-content{
-    padding: 0!important;
+.p-card-content {
+  padding: 0 !important;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  border-bottom: 2px solid var(--text-color);
+  margin-bottom: 0.6264em;
+  font-size: 12.5pt;
+  font-weight: bold;
+  text-transform: inherit;
+  letter-spacing: 0.5px;
+  line-height: 23px;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.container-description {
+  width: 100%;
+  white-space: pre-wrap;
+  line-height: 21px;
+  word-break: break-word;
+}
+
+.job-title,
+.school-title,
+.name {
+  font-weight: bold;
+  display: inline-block;
+  white-space: pre-wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.employer,
+.school {
+  font-weight: normal;
+  font-style: italic;
+  display: inline;
+}
+
+.container-title {
+  font-size: 11.5pt;
+  line-height: 21px;
+  padding-bottom: 0px;
+}
+
+.w-15 {
+  width: 15%;
+}
+.w-85 {
+  width: 85%;
 }

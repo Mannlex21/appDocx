@@ -1,6 +1,12 @@
-<div *ngFor="let item of data">
-  <p style="padding: 0; margin: 0">{{ item.level }}</p>
-  <p style="padding: 0; margin: 0">{{ item.schoolName }}</p>
-  <p style="padding: 0; margin: 0">{{ item.date }}</p>
+<div class="title">{{ data.title }}</div>
+<div *ngFor="let item of content" class="w-100">
+  <div class="flex w-100">
+    <span class="w-15">{{ item.date }}</span>
+    <div class="container-title w-85">
+      <span class="school-title">{{ item.level }}, </span>
+      <span class="school">{{ item.schoolName }}</span>
+    </div>
+  </div>
+
   <br />
 </div>

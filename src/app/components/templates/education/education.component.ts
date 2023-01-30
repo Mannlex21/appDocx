@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Profile, Education } from '../../../interfaces/docx.interface';
+import {
+  Profile,
+  Education,
+  Section,
+} from '../../../interfaces/docx.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -8,9 +12,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class EducationComponent {
   @Input()
-  data!: Education[];
+  data!: Section;
+  content: Education[] = [];
   constructor(private sanitizer: DomSanitizer) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.content = this.data.contentHTML.content as Education[];
+  }
 
   sanitazerText(text: string) {
     return this.sanitizer.bypassSecurityTrustHtml(text);

@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProfesionalExperience } from '../../../interfaces/docx.interface';
+import {
+  ProfesionalExperience,
+  Section,
+} from '../../../interfaces/docx.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -8,9 +11,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ProfesionalExperienceComponent implements OnInit {
   @Input()
-  data!: ProfesionalExperience[];
+  data!: Section;
+  content: ProfesionalExperience[] = [];
   constructor(private sanitizer: DomSanitizer) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.content = this.data.contentHTML.content as ProfesionalExperience[];
+  }
 
   sanitazerText(text: string) {
     return this.sanitizer.bypassSecurityTrustHtml(text);

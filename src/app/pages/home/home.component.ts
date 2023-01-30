@@ -19,6 +19,7 @@ export class HomeComponent {
       title: 'Resume',
       type: {
         value: TypeTemplate.Profile,
+        separator: '<name>',
       },
     },
     {
@@ -26,7 +27,7 @@ export class HomeComponent {
       title: 'Experiencia profesional',
       type: {
         value: TypeTemplate.ProfesionalExperience,
-        separator: '<Employer>',
+        separator: '<employer>',
       },
     },
     {
@@ -34,22 +35,22 @@ export class HomeComponent {
       title: 'Educación',
       type: {
         value: TypeTemplate.Education,
-        separator: '<School>',
+        separator: '<school>',
       },
     },
     {
       keySeparator: '<languages>',
       title: 'Idiomas',
       type: {
-        value: TypeTemplate.Profile,
+        value: TypeTemplate.Language,
       },
     },
     {
-      keySeparator: '<curses>',
+      keySeparator: '<courses>',
       title: 'Cursos y certificaciones',
 
       type: {
-        value: TypeTemplate.Profile,
+        value: TypeTemplate.Courses,
       },
     },
     {
@@ -61,6 +62,8 @@ export class HomeComponent {
       },
     },
   ];
+  apiDev: string = 'http://localhost:8888/api/uploadDocx';
+  apiProd: string = 'https://mannlexdocx.netlify.app/api/uploadDocx';
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   async upload(event: any) {
@@ -77,11 +80,9 @@ export class HomeComponent {
     let formParams = new FormData();
     formParams.append('request', JSON.stringify(request));
     formParams.append('image', file);
-    console.log(formParams);
-    // http://localhost:8888/api/uploadDocx
-    // https://mannlexdocx.netlify.app/api/uploadDocx
+
     return this.httpClient
-      .post('http://localhost:8888/api/uploadDocx', formParams, {
+      .post(this.apiDev, formParams, {
         reportProgress: true,
         observe: 'events',
       })
@@ -105,7 +106,8 @@ export class HomeComponent {
                 queryParams: { params: JSON.stringify(event.body) },
               });
             } else {
-              // this.onUpload.emit({ files: this.file });
+              // console.error(event['status']);
+              // this.primeFileUpload?.clear();
             }
             break;
           default:

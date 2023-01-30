@@ -1,7 +1,22 @@
-<div class="prueba">
+<app-toolbar></app-toolbar>
+<div class="mt-4">
   <div *ngFor="let item of data.sections">
-    <h1>{{ item.title }}</h1>
     <app-docx-item [item]="item"></app-docx-item>
     <br />
   </div>
 </div>
+<p-dialog header="Errors" [(visible)]="showModal" (onHide)="hideModal()">
+  <div class="mb-2">
+    There are {{ data.error.length }} error, It could generate an error in the
+    document
+  </div>
+  <p-accordion>
+    <p-accordionTab header="Messages">
+      <ul>
+        <li *ngFor="let item of data.error">
+          {{ item.code }} - {{ item.message }}
+        </li>
+      </ul>
+    </p-accordionTab>
+  </p-accordion>
+</p-dialog>
