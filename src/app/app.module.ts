@@ -9,14 +9,16 @@ import { CardModule } from 'primeng/card';
 import { FileUploadModule } from 'primeng/fileupload';
 
 import { AppComponent } from './app.component';
-import { DocxComponent } from './components/docx/docx.component';
+import { DocxComponent } from './pages/docx/docx.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home/home.component';
-import { ComponentDirective } from './component.directive';
-import { TemplatePExperienceComponent } from './components/template-pexperience/template-pexperience.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ComponentDirective } from './shared/component.directive';
+import { ProfesionalExperienceComponent } from './components/templates/profesional-experience/profesional-experience.component';
 import { DocxItemComponent } from './components/docx-item/docx-item.component';
-import { ComponentService } from './component.service';
-import { TemplateTextComponent } from './components/template-text/template-text.component';
+import { ComponentService } from './services/component.service';
+import { ProfileComponent } from './components/templates/profile/profile.component';
+import { SkillsComponent } from './components/templates/skills/skills.component';
+import { EducationComponent } from './components/templates/education/education.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,11 @@ import { TemplateTextComponent } from './components/template-text/template-text.
     DocxComponent,
     HomeComponent,
     ComponentDirective,
-    TemplatePExperienceComponent,
     DocxItemComponent,
-    TemplateTextComponent,
+    ProfesionalExperienceComponent,
+    ProfileComponent,
+    SkillsComponent,
+    EducationComponent,
   ],
   imports: [
     BrowserModule,

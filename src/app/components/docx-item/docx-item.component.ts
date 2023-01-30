@@ -1,11 +1,10 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TypeTemplate } from 'src/app/enums/type.enum';
 import { Section } from '../../interfaces/docx.interface';
-import { ComponentDirective } from '../../component.directive';
+import { ComponentDirective } from '../../shared/component.directive';
 import { TemplateComponent } from '../../interfaces/template-component.interface';
-import { TemplatePExperienceComponent } from '../template-pexperience/template-pexperience.component';
-import { ComponentItem } from '../../component-item';
-import { ComponentService } from '../../component.service';
+import { ComponentItem } from '../../shared/component-item';
+import { ComponentService } from '../../services/component.service';
 
 @Component({
   selector: 'app-docx-item',
@@ -16,10 +15,10 @@ export class DocxItemComponent implements OnInit {
   componentHost!: ComponentDirective;
   @Input('item') section: Section = {
     title: '',
-    name: '',
+    keySeparator: '',
     contentText: '',
     contentHTML: {
-      type: TypeTemplate.Text,
+      type: TypeTemplate.Profile,
       content: '',
     },
     order: 0,
@@ -28,7 +27,9 @@ export class DocxItemComponent implements OnInit {
     component: ComponentItem,
     data: undefined,
   };
+
   constructor(private componentService: ComponentService) {}
+
   ngOnInit(): void {
     this.template = this.componentService.getComponent(
       this.section.contentHTML.type,
@@ -36,7 +37,6 @@ export class DocxItemComponent implements OnInit {
     );
     const viewContainerRef = this.componentHost.viewContainerRef;
     viewContainerRef.clear();
-    console.log(this.template);
     const componentRef = viewContainerRef.createComponent<TemplateComponent>(
       this.template.component
     );

@@ -1,5 +1,6 @@
 export enum TypeTemplate {
   ProfesionalExperience = 'profesional-experience',
-  Text = 'text',
-  List = 'list',
+  Profile = 'profile',
+  Skills = 'skills',
+  Education = 'education',
 }

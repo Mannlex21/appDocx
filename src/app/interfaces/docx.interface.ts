@@ -5,11 +5,12 @@ export interface Docx {
   body: string;
   header: string;
   footer: string;
+  error: Error[];
 }
 
 export interface Section {
   title: string;
-  name: string;
+  keySeparator: string;
   contentText: string;
   contentHTML: ContentHTML;
   order: number;
@@ -17,12 +18,32 @@ export interface Section {
 
 export interface ContentHTML {
   type: TypeTemplate;
-  content: ProfesionalExperience | string;
+  content: ProfesionalExperience[] | Profile | Education[] | Skills[] | string;
 }
 
 export interface ProfesionalExperience {
-  first: string;
-  second: string;
-  third: string;
+  employer: string;
+  date: string;
+  jobTitle: string;
   body: string;
+}
+
+export interface Profile {
+  body: string;
+}
+
+export interface Education {
+  level: string;
+  schoolName: string;
+  date: string;
+}
+
+export interface Skills {
+  skillName: string;
+  level: string;
+}
+
+export interface Error {
+  code: string;
+  message: string;
 }

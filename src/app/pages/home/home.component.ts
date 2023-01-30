@@ -13,46 +13,61 @@ export class HomeComponent {
   @ViewChild('primeFileUpload') primeFileUpload: FileUpload | undefined;
   progress: number = 0;
   file?: File;
+  request: RequestDocx[] = [
+    {
+      keySeparator: '<resume>',
+      title: 'Resume',
+      type: {
+        value: TypeTemplate.Profile,
+      },
+    },
+    {
+      keySeparator: '<prof-experience>',
+      title: 'Experiencia profesional',
+      type: {
+        value: TypeTemplate.ProfesionalExperience,
+        separator: '<Employer>',
+      },
+    },
+    {
+      keySeparator: '<education>',
+      title: 'Educación',
+      type: {
+        value: TypeTemplate.Education,
+        separator: '<School>',
+      },
+    },
+    {
+      keySeparator: '<languages>',
+      title: 'Idiomas',
+      type: {
+        value: TypeTemplate.Profile,
+      },
+    },
+    {
+      keySeparator: '<curses>',
+      title: 'Cursos y certificaciones',
+
+      type: {
+        value: TypeTemplate.Profile,
+      },
+    },
+    {
+      keySeparator: '<skills>',
+      title: 'Conocimiento',
+
+      type: {
+        value: TypeTemplate.Skills,
+      },
+    },
+  ];
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   async upload(event: any) {
     this.file = event.files.find((f: File) => f);
     if (this.file) {
-      const request: RequestDocx[] = [
-        {
-          keySeparator: 'Resumen',
-          type: {
-            value: TypeTemplate.Text,
-          },
-        },
-        {
-          keySeparator: 'Experiencia Profesional',
-          type: {
-            value: TypeTemplate.ProfesionalExperience,
-            separator: 'Empresa',
-          },
-        },
-        {
-          keySeparator: 'Educación',
-          type: {
-            value: TypeTemplate.Text,
-          },
-        },
-        {
-          keySeparator: 'Cursos y Certificaciones',
-          type: {
-            value: TypeTemplate.Text,
-          },
-        },
-        {
-          keySeparator: 'Conocimientos',
-          type: {
-            value: TypeTemplate.List,
-          },
-        },
-      ];
       const obj = {
-        keyWords: request,
+        keyWords: this.request,
       };
       this.uploadfile(this.file, obj);
     }
@@ -86,7 +101,6 @@ export class HomeComponent {
             this.progress = 0;
             this.primeFileUpload?.clear();
             if (event['status'] >= 200 && event['status'] < 300) {
-              console.log(event);
               this.router.navigate(['/docx'], {
                 queryParams: { params: JSON.stringify(event.body) },
               });

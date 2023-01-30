@@ -1,5 +1,6 @@
 export interface RequestDocx {
   keySeparator: string;
+  title: string;
   type: Type;
 }
 
